@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshCart Grocery</title>
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+
+  <style>
+    :root {
+  color-scheme: light;
+  --green: #1c7c54;
+  --light-green: #e7f5ee;
+  --dark: #1f2933;
+  --muted: #52606d;
+  --border: #e4e7eb;
+  --bg: #f5f7fa;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  padding: 32px;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.tag {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.subhead {
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.hero-card {
+  display: grid;
+  gap: 16px;
+  background: var(--light-green);
+  padding: 20px;
+  border-radius: 20px;
+  min-width: 220px;
+}
+
+.time-block p {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.time-block h2 {
+  font-size: 1.5rem;
+  margin-top: 6px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+}
+
+.section-header {
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.section-header p {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.card .price {
+  font-weight: 600;
+  color: var(--green);
+  font-size: 1.1rem;
+}
+
+.card button {
+  margin-top: auto;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--border);
+  height: fit-content;
+}
+
+.cart h3 {
+  font-size: 1.4rem;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.cart-summary {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.cart-summary div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.primary {
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.tracking {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--border);
+}
+
+.tracking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.tracking-card {
+  background: var(--light-green);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.tracking-card p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.tracking-card h3 {
+  font-size: 1.2rem;
+  margin-top: 6px;
+}
+
+.progress {
+  height: 12px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1c7c54, #39c18b);
+  transition: width 0.5s ease;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <p class="tag">Grocery-only delivery</p>
+          <h1>FreshCart Grocery</h1>
+          <p class="subhead">
+            Stock up on fresh produce, pantry staples, and household essentials. Track your order time in real time once you place it.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="time-block">
+            <p>Current time</p>
+            <h2 id="current-time">--:--</h2>
+          </div>
+          <div class="time-block">
+            <p>Order timer</p>
+            <h2 id="order-timer">00:00:00</h2>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section>
+          <div class="section-header">
+            <h2>Grocery essentials</h2>
+            <p>Only grocery items are available in this app.</p>
+          </div>
+          <div class="grid" id="product-grid"></div>
+        </section>
+
+        <aside class="cart">
+          <h3>Your cart</h3>
+          <div id="cart-items" class="cart-items"></div>
+          <div class="cart-summary">
+            <div>
+              <span>Items</span>
+              <span id="cart-count">0</span>
+            </div>
+            <div>
+              <span>Total</span>
+              <span id="cart-total">$0.00</span>
+            </div>
+          </div>
+          <button id="place-order" class="primary" disabled>Place grocery order</button>
+          <p class="note">Delivery tracking activates after your order is placed.</p>
+        </aside>
+      </main>
+
+      <section class="tracking" id="tracking-section">
+        <div>
+          <h2>Real-time delivery tracking</h2>
+          <p>Your grocery order is on the way. Follow the live countdown and progress below.</p>
+        </div>
+        <div class="tracking-grid">
+          <div class="tracking-card">
+            <p>Placed at</p>
+            <h3 id="placed-at">--:--</h3>
+          </div>
+          <div class="tracking-card">
+            <p>Estimated arrival</p>
+            <h3 id="eta">--:--</h3>
+          </div>
+          <div class="tracking-card">
+            <p>Time remaining</p>
+            <h3 id="remaining">--:--</h3>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="status-row">
+          <span id="status-text">Awaiting order...</span>
+          <span id="elapsed">Elapsed: 00:00:00</span>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
