@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshCart Grocery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <p class="tag">Grocery-only delivery</p>
+          <h1>FreshCart Grocery</h1>
+          <p class="subhead">
+            Stock up on fresh produce, pantry staples, and household essentials. Track your order time in real time once you place it.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="time-block">
+            <p>Current time</p>
+            <h2 id="current-time">--:--</h2>
+          </div>
+          <div class="time-block">
+            <p>Order timer</p>
+            <h2 id="order-timer">00:00:00</h2>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section>
+          <div class="section-header">
+            <h2>Grocery essentials</h2>
+            <p>Only grocery items are available in this app.</p>
+          </div>
+          <div class="grid" id="product-grid"></div>
+        </section>
+
+        <aside class="cart">
+          <h3>Your cart</h3>
+          <div id="cart-items" class="cart-items"></div>
+          <div class="cart-summary">
+            <div>
+              <span>Items</span>
+              <span id="cart-count">0</span>
+            </div>
+            <div>
+              <span>Total</span>
+              <span id="cart-total">$0.00</span>
+            </div>
+          </div>
+          <button id="place-order" class="primary" disabled>Place grocery order</button>
+          <p class="note">Delivery tracking activates after your order is placed.</p>
+        </aside>
+      </main>
+
+      <section class="tracking" id="tracking-section">
+        <div>
+          <h2>Real-time delivery tracking</h2>
+          <p>Your grocery order is on the way. Follow the live countdown and progress below.</p>
+        </div>
+        <div class="tracking-grid">
+          <div class="tracking-card">
+            <p>Placed at</p>
+            <h3 id="placed-at">--:--</h3>
+          </div>
+          <div class="tracking-card">
+            <p>Estimated arrival</p>
+            <h3 id="eta">--:--</h3>
+          </div>
+          <div class="tracking-card">
+            <p>Time remaining</p>
+            <h3 id="remaining">--:--</h3>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="status-row">
+          <span id="status-text">Awaiting order...</span>
+          <span id="elapsed">Elapsed: 00:00:00</span>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
